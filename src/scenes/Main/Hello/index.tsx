@@ -1,17 +1,19 @@
 import React from 'react';
 import {StyleSheet, View} from 'react-native';
 import {Button, Text} from '@/components'
+import {connect} from "react-redux";
+import actions from "@/redux/actions";
 
-export default () => {
-  return (
-      <View style={styles.container}>
-        <View style={styles.infoContainer}>
-          <Text category="header">Hello, World!</Text>
-        </View>
-        <Button label="Login" onPress={() => {}}/>
-      </View>
-  );
-};
+const HelloScene:React.FC<{
+  authenticate: Function
+}> = ({authenticate}) => (
+  <View style={styles.container}>
+    <View style={styles.infoContainer}>
+      <Text category="header">Hello, World!</Text>
+    </View>
+    <Button label="Login" onPress={() => authenticate()}/>
+  </View>
+);
 
 const styles = StyleSheet.create({
   container: {
@@ -25,3 +27,10 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   }
 });
+
+export default connect(
+  null,
+  {
+    authenticate: actions.user.authenticate,
+  }
+)(HelloScene);

@@ -1,9 +1,19 @@
 import React from 'react';
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
+import {connect} from "react-redux";
+import {RootState} from '@/redux/store';
 import COLORS from '@/styles/colors';
-import TabBar from './type'
+import TabBar, {State} from './type'
 
-export default ({ state, descriptors, navigation }: TabBar) => {
+const BottomTab: React.FC<{
+  state: State,
+  navigation: any,
+  isLoggedIn: boolean,
+}> = ({state, navigation, isLoggedIn}) => {
+  if (!isLoggedIn) {
+    return null
+  }
+
   return (
     <View style={styles.container}>
       {state.routes.map((route, index) => {
@@ -31,6 +41,14 @@ export default ({ state, descriptors, navigation }: TabBar) => {
   );
 }
 
+
+const mapStateToProps = ({user}: RootState) => {
+  const { token, profileUrl, name } = user;
+  return {
+    isLoggedIn: !!(token && profileUrl && name)
+  };
+}
+
 const styles = StyleSheet.create({
   container: {
     height: 56,
@@ -43,4 +61,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center'
   }
-})
+});
+
+const ConnectedBottomTab =  connect(mapStateToProps)(BottomTab);
+
+export default ({ state, navigation }: TabBar) => {
+  return (<ConnectedBottomTab state={state} navigation={navigation} />)
+}
