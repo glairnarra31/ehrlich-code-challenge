@@ -13,7 +13,6 @@ export type State = {
   
 export type TabBar = {
   state: State,
-  descriptors: any,
   navigation: any,
 }
 

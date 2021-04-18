@@ -10,7 +10,7 @@ type WeatherAction = {
   
 type DispatchType = (args: WeatherAction) => WeatherAction
 
-export const setWeather = (geolocation: GeolocationResponse) => async (dispatch: DispatchType) => {
+export const setWeather: Function = (geolocation: GeolocationResponse) => async (dispatch: DispatchType) => {
   try {
     const { latitude, longitude } = geolocation.coords
     const data: any = await getWeatherByLongLat(longitude, latitude);

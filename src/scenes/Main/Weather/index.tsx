@@ -13,12 +13,12 @@ const WeatherScene: React.FC<{
 
   const simpleData = [
     ['Date (mm/dd/yy)', 'Temperature (F)'],
-    [date, temp],
+    [date, temp || ''],
   ];
 
   const expandedData = [
     ['Date\n(mm/dd/yy)', 'Temperature (F)', 'Description', 'Main', 'Pressure', 'Humidity'],
-    [date, temp, description, main, pressure, humidity],
+    [date, temp || '', description || '', main || '', pressure || '', humidity || ''],
   ];
 
   const [orientation, setOrientation] = React.useState("PORTRAIT");
