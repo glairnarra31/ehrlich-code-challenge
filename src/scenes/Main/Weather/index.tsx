@@ -12,12 +12,12 @@ const WeatherScene: React.FC<{
   const { temp, description, humidity, main, pressure } = weather
 
   const simpleData = [
-    ['Date (mm/dd/yy)', 'Temperature (F)'],
+    ['Date (mm/dd/yyyy)', 'Temperature (F)'],
     [date, temp || ''],
   ];
 
   const expandedData = [
-    ['Date\n(mm/dd/yy)', 'Temperature (F)', 'Description', 'Main', 'Pressure', 'Humidity'],
+    ['Date\n(mm/dd/yyyy)', 'Temperature (F)', 'Description', 'Main', 'Pressure', 'Humidity'],
     [date, temp || '', description || '', main || '', pressure || '', humidity || ''],
   ];
 
