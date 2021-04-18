@@ -1,10 +1,14 @@
 import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, View} from 'react-native';
+import {Button, Text} from '@/components'
 
 export default () => {
   return (
       <View style={styles.container}>
-        <Text>Hello World!</Text>
+        <View style={styles.infoContainer}>
+          <Text category="header">Hello, World!</Text>
+        </View>
+        <Button label="Login" onPress={() => {}}/>
       </View>
   );
 };
@@ -15,4 +19,9 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
+  infoContainer: {
+    marginBottom: 40,
+    alignItems: 'center',
+    justifyContent: 'center',
+  }
 });
