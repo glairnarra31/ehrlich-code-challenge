@@ -1,13 +1,11 @@
 import React from 'react';
-import {SafeAreaView, StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, Text, View} from 'react-native';
 
-const App = () => {
+export default () => {
   return (
-    <SafeAreaView style={{flex: 1}}>
       <View style={styles.container}>
-        <Text>Hello World!</Text>
+        <Text>Weather!</Text>
       </View>
-    </SafeAreaView>
   );
 };
 
@@ -18,5 +16,3 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
 });
-
-export default App;
