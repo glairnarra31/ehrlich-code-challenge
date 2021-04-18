@@ -1,0 +1,1 @@
+export type TableData = Array<Array<string>>

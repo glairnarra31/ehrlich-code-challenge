@@ -1,0 +1,1 @@
+export type TextCategory = 'header' | 'title' | 'subtitle' | 'label'
