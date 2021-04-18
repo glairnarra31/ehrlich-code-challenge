@@ -6,7 +6,13 @@ export const WEATHER = {
   SET_WEATHER: 'SET_WEATHER',
 }
 
+export const USER = {
+  SET_USER_TOKEN: 'SET_USER_TOKEN',
+  SET_USER_PROFILE: 'SET_USER_PROFILE',
+}
+
 export default {
   GEOLOCATION,
-  WEATHER
+  WEATHER,
+  USER,
 }
