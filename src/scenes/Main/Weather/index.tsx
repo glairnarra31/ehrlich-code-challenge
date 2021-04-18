@@ -1,16 +1,24 @@
 import React from 'react';
 import {StyleSheet, View, Dimensions} from 'react-native';
+import {connect} from "react-redux";
 import {Table} from '@/components'
+import {RootState} from '@/redux/store';
+import {Weather} from '@/redux/actions/type';
 
-export default () => {
+const WeatherScene: React.FC<{
+  weather: Weather
+}> = ({weather}) => {
+  const date = new Date().toLocaleDateString();
+  const { temp, description, humidity, main, pressure } = weather
+
   const simpleData = [
     ['Date (mm/dd/yy)', 'Temperature (F)'],
-    ['09/01/2020', '75'],
+    [date, temp],
   ];
 
   const expandedData = [
     ['Date\n(mm/dd/yy)', 'Temperature (F)', 'Description', 'Main', 'Pressure', 'Humidity'],
-    ['09/01/2020', '75', 'Sky is clear', 'Clear', '1023.68', '100'],
+    [date, temp, description, main, pressure, humidity],
   ];
 
   const [orientation, setOrientation] = React.useState("PORTRAIT");
@@ -34,3 +42,9 @@ const styles = StyleSheet.create({
     padding: 20,
   }
 });
+
+const mapStateToProps = ({weather}: RootState) => {
+  return {weather};
+}
+
+export default connect(mapStateToProps)(WeatherScene);

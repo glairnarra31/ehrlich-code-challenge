@@ -1,22 +1,25 @@
 import React from 'react';
 import {StyleSheet, View} from 'react-native';
-import {Button, Text} from '@/components'
+import {connect} from "react-redux";
 import Geolocation, {GeolocationResponse} from '@react-native-community/geolocation';
 import {requestLocationPermission} from '@/services/permissions'
-import {getWeatherByLongLat} from '@/services/weather';
+import actions from "@/redux/actions";
+import {Button, Text} from '@/components'
 
-export default () => {
-
+const HomeScene: React.FC<{
+  setGeolocation: Function,
+  setWeather: Function,
+}> = ({setGeolocation, setWeather}) => {
   const onPress = async () => {
-    await requestLocationPermission();
-    Geolocation.getCurrentPosition(async (location: GeolocationResponse) => {
-      // console.log(location);
-      try {
-        const result = await getWeatherByLongLat(location.coords.longitude,location.coords.latitude)
-        console.log('getWeatherByLongLat', result)
-      } catch (error) {
-        console.warn('getWeatherByLongLat', error)
-      }
+    const hasPermission = await requestLocationPermission();
+    if (!hasPermission) {
+      console.log('No permission granted'); 
+      return;
+    }
+
+    Geolocation.getCurrentPosition((geolocation: GeolocationResponse) => {
+      setGeolocation(geolocation)
+      setWeather(geolocation)
     })
   }
 
@@ -43,3 +46,11 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   }
 });
+
+export default connect(
+  null,
+  {
+    setGeolocation: actions.geolocation.setGeolocation,
+    setWeather: actions.weather.setWeather,
+  }
+)(HomeScene);

@@ -1,1 +1,1 @@
-export type TableData = Array<Array<string>>
+export type TableData = Array<Array<string | number>>
