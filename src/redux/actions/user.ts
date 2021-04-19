@@ -14,7 +14,7 @@ type DispatchType = (args: UserAction) => UserAction
 export const authenticate: Function = () => async (dispatch: DispatchType) => {
   try {
     const config = {
-      redirectUrl: 'com.ehrlichcodechallenge://callback',
+      redirectUrl: 'ehrlichcodechallenge://callback',
       clientId: GITHUB_CLIENT_ID,
       clientSecret: GITHUB_CLIENT_SECRET,
       scopes: ['identity'],

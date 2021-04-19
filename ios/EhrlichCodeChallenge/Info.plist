@@ -30,10 +30,10 @@
 	<array>
 		<dict>
 			<key>CFBundleURLName</key>
-			<string>com.ehrlichcodechallenge</string>
+			<string>ehrlichcodechallenge</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>com.ehrlichcodechallenge</string>
+				<string>ehrlichcodechallenge</string>
 			</array>
 		</dict>
 	</array>
